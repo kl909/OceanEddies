@@ -27,7 +27,7 @@ function [ eddies ] = scan_single( ssh, lat, lon, date, cyc, scan_type, areamap,
     end
 
     if ~all(size(ssh) == [length(lat) length(lon)])
-        error('Invalid ssh data size, should be [length(lat) length(lon]');
+        error('Invalid ssh data size, should be [length(lat) length(lon)]');
     end
     
     if ~all(size(areamap) == size(ssh))

@@ -27,7 +27,8 @@ if ~exist(ssh_save_path, 'dir')
     mkdir(ssh_save_path);
 end
 disp('Generating dates.');
-dates = generate_dates_nc(NetCDF_files_path);%#ok
+%dates = generate_dates_nc(NetCDF_files_path);%#okssh_NetCDF_name
+dates = datetime(2000,11,17,12:2000,11,19,12);
 save([ssh_save_path, 'dates.mat'], 'dates');
 disp('Getting latitude and longitude information.');
 [lat, lon] = get_lat_and_lon(NetCDF_files_path, lat_NetCDF_name, lon_NetCDF_name);
@@ -39,7 +40,7 @@ lon_bnds = create_bounds_for_lon_from_number(length(lon));
 area_map = gen_area_map(lat_bnds, lon_bnds);%#ok
 save([ssh_save_path, 'area_map.mat'], 'area_map'); 
 disp('Extracting SSH data from NetCDF files.');
-extract_ssh_data(NetCDF_files_path, ssh_NetCDF_name, lat, lon, ssh_save_path);
+%extract_ssh_data(NetCDF_files_path, ssh_NetCDF_name, lat, lon, ssh_save_path);
 end
 
 function par_save(filename, data)%#ok
